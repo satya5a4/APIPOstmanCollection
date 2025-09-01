@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "f61db24f-650b-417e-935b-eb635ba95df9",
+		"name": "APIAutomationTesting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39275754",
+		"_collection_link": "https://test33-3168.postman.co/workspace/test-Workspace~95f71834-9f31-4426-8871-d73213ee0b73/collection/39275754-f61db24f-650b-417e-935b-eb635ba95df9?action=share&source=collection_link&creator=39275754"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"timestamp\", new Date().toISOString());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Check response status code",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Check JSON response body",
+							"pm.test(\"Verify user name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(\"meelad\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.agify.io?name=meelad",
+					"protocol": "https",
+					"host": [
+						"api",
+						"agify",
+						"io"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "meelad"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.genderize.io?name=luc",
+					"protocol": "https",
+					"host": [
+						"api",
+						"genderize",
+						"io"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "luc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nationalize.io?name=nathaniel",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nationalize",
+						"io"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "nathaniel"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
